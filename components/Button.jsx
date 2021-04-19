@@ -12,6 +12,7 @@ const StyledButton = styled.a`
   font-weight: 700;
   box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.50);
   &:hover {
+    cursor: pointer;
     background-color: var(--color-primary);
     color: var(--color-text);
     box-shadow: 4px 4px 2px 1px rgba(0,0,0,0.50);

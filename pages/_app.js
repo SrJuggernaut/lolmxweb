@@ -10,7 +10,8 @@ import {
   faCheck,
   faTimes,
   faSquare,
-  faChevronRight
+  faChevronRight,
+  faGavel
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faFacebook,
@@ -32,7 +33,8 @@ library.add(
   faInstagram,
   faYoutube,
   faTwitch,
-  faChevronRight
+  faChevronRight,
+  faGavel
 )
 config.autoAddCss = false
 

@@ -19,7 +19,7 @@ export default function Home () {
         </UnordenedList>
         <ListItem>Prohibido todo contenido de tipo:</ListItem>
         <UnordenedList>
-          <ListItem>Pornográfico</ListItem>
+          <ListItem>NSFW</ListItem>
           <ListItem>Violencia explicita</ListItem>
         </UnordenedList>
         <ListItem>
@@ -61,10 +61,16 @@ export default function Home () {
         aprender.
       </p>
       <h2>Eventos</h2>
-      <p>
-        Está permitido publicar eventos, siempre y cuando estos sean dirigidos
-        al disfrute y recreación de la comunidad.
-      </p>
+      <UnordenedList>
+        <ListItem>
+          Todos los eventos deberan apegarse a la{' '}
+          <a href="#flexibilidad-de-contenido">Flexibilidad de contenido</a>.
+        </ListItem>
+        <ListItem>
+          Está permitido publicar eventos, siempre y cuando estos sean dirigidos
+          al disfrute y recreación de la comunidad.
+        </ListItem>
+      </UnordenedList>
       <h2>Streams</h2>
       <UnordenedList>
         <ListItem>
@@ -72,8 +78,8 @@ export default function Home () {
           <a href="#flexibilidad-de-contenido">Flexibilidad de contenido</a>.
         </ListItem>
         <ListItem>
-          En medida de lo posible intentar evitar evitar que varios usuarios
-          compartan el mismo stream, podría ser considerado como SPAM.
+          En medida de lo posible intentar evitar que varios usuarios compartan
+          el mismo stream, podría ser considerado como SPAM.
         </ListItem>
       </UnordenedList>
       <h2>Spam</h2>
@@ -94,7 +100,7 @@ export default function Home () {
       <Table>
         <thead>
           <tr>
-            <th>Indidencias</th>
+            <th>incidencias</th>
             <th>Sanciones</th>
           </tr>
         </thead>
@@ -139,7 +145,7 @@ export default function Home () {
             <td>7a</td>
             <td>
               <UnordenedList>
-                <ListItem>Eliminar Publicacion</ListItem>
+                <ListItem icon="gavel">BAN</ListItem>
               </UnordenedList>
             </td>
           </tr>
