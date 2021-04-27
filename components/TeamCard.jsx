@@ -10,7 +10,7 @@ const StyledCommuntiyCard = styled.div`
   padding: 1rem;
   border: 1px solid var(--color-primary);
   border-radius: 1rem;
-  img{
+  img {
     width: 120px;
     height: 120px;
   }
@@ -25,11 +25,12 @@ const StyledCommuntiyCard = styled.div`
   }
 `
 
-const CommunityCard = ({ name, description, links }) => {
+const TeamCard = ({ name, links }) => {
+  console.log(name)
   return (
     <StyledCommuntiyCard>
       <Img
-        src={`/assets/img/comunidades/${name}.png`}
+        src={`/assets/img/equipo/${name}.png`}
         width="120px"
         height="120px"
         alt={name}
@@ -37,7 +38,6 @@ const CommunityCard = ({ name, description, links }) => {
       />
       <div>
         <h2>{name}</h2>
-        <p>{description}</p>
         <div>
           {links.map((l) => (
             <a href={l.url} key={l.url}>
@@ -50,4 +50,4 @@ const CommunityCard = ({ name, description, links }) => {
   )
 }
 
-export default CommunityCard
+export default TeamCard

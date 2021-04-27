@@ -3,10 +3,17 @@ import Layout from '../layout/Layout'
 import styled from '@emotion/styled'
 import Button from '../components/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { lgStart } from '../helpers/breakPoints'
 
 const StyledHero = styled.div`
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
+  @media (min-width: ${lgStart}){
+    flex-direction: row;
+  }
   section{
+    padding-block: 16px;
     text-align: center;
   }
 `

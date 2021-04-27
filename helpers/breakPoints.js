@@ -1,0 +1,8 @@
+export const smStart = '0px'
+export const smEnd = '425px'
+export const mdStart = '426px'
+export const mdEnd = '768px'
+export const lgStart = '769px'
+export const lgEnd = '1024px'
+export const xlStart = '1025px'
+export const xlEnd = '1440px'

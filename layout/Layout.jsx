@@ -5,22 +5,19 @@ import Header from './header/Header'
 import Footer from './footer/Footer'
 
 const StyledMain = styled.main`
-  flex: 1 0 auto;
+  flex: 1;
   margin: 0 auto;
-  padding: 16px;
+  padding: 24px;
   width: 100%;
-  > div {
-    width: 100%;
-    margin: 0 auto;
-    @media (min-width: 768px) {
-      max-width: 768px;
-    }
-    @media (min-width: 1024px) {
-      max-width: 1024px;
-    }
-    @media (min-width: 1440px) {
-      max-width: 1440px;
-    }
+  margin: 0 auto;
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+  }
+  @media (min-width: 1440px) {
+    max-width: 1440px;
   }
 `
 
@@ -54,7 +51,7 @@ const Layout = ({ children }) => {
       </Head>
       <Header />
       <StyledMain>
-        <div>{children}</div>
+        {children}
       </StyledMain>
       <Footer />
     </>
