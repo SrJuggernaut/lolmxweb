@@ -1,14 +1,20 @@
 const equipo = [
   {
-    name: 'SrJuggernaut',
-    links: [
+    title: 'SrJuggernaut',
+    imgSrc: '/assets/img/equipo/SrJuggernaut.png',
+    description: '',
+    iconList: [
       {
         url: 'https://www.facebook.com/SrJuggernaut',
-        icon: 'facebook'
+        icon: 'facebook',
+        style: 'fab',
+        desc: 'Facebook SrJuggernaut'
       },
       {
         url: 'https://twitter.com/SrJuggernaut',
-        icon: 'twitter'
+        icon: 'twitter',
+        style: 'fab',
+        desc: 'Twitter SrJuggernaut'
       }
     ]
   }

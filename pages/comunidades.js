@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../layout/Layout'
 import styled from '@emotion/styled'
-import CommunityCard from '../components/CommunityCard'
+import Card from '../components/ui/Card'
 import arrayComunidades from '../helpers/comunidades'
 
 const StyledGrid = styled.div`
@@ -27,7 +27,7 @@ const comunidades = () => {
     <Layout>
       <StyledGrid>
         {arrayComunidades.map((comunidad) => (
-          <CommunityCard {...comunidad} key={comunidad.name} />
+          <Card {...comunidad} key={comunidad.title} />
         ))}
       </StyledGrid>
     </Layout>

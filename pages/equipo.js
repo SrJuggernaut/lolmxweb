@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../layout/Layout'
 import styled from '@emotion/styled'
 import equipoArray from '../helpers/equipo'
-import TeamCard from '../components/TeamCard'
+import Card from '../components/ui/Card'
 
 const StyledGrid = styled.div`
   display: grid;
@@ -29,7 +29,7 @@ const equipo = () => {
       <p>Actualmente la moderación del grupo esta a cargo de el equipo de moderación de EntGamers, si deseas unirte a la moderacion deberas seguir el proceso de</p>
       <StyledGrid>
         {equipoArray.map(e => {
-          return <TeamCard {... e} key={e.name} />
+          return <Card {... e} key={e.title} />
         })}
       </StyledGrid>
     </Layout>

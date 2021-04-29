@@ -11,9 +11,12 @@ import {
   faTimes,
   faSquare,
   faChevronRight,
-  faGavel
+  faGavel,
+  faUsers,
+  faGlobe
 } from '@fortawesome/free-solid-svg-icons'
 import {
+  faDiscord,
   faFacebook,
   faInstagram,
   faTwitch,
@@ -21,6 +24,12 @@ import {
   faYoutube
 } from '@fortawesome/free-brands-svg-icons'
 library.add(
+  faFacebook,
+  faTwitter,
+  faYoutube,
+  faInstagram,
+  faDiscord,
+  faGlobe,
   faBars,
   faHeart,
   faFeatherAlt,
@@ -28,13 +37,10 @@ library.add(
   faCheck,
   faTimes,
   faSquare,
-  faFacebook,
-  faTwitter,
-  faInstagram,
-  faYoutube,
   faTwitch,
   faChevronRight,
-  faGavel
+  faGavel,
+  faUsers
 )
 config.autoAddCss = false
 
