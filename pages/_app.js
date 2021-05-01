@@ -13,7 +13,8 @@ import {
   faChevronRight,
   faGavel,
   faUsers,
-  faGlobe
+  faGlobe,
+  faDownload
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faDiscord,
@@ -40,7 +41,8 @@ library.add(
   faTwitch,
   faChevronRight,
   faGavel,
-  faUsers
+  faUsers,
+  faDownload
 )
 config.autoAddCss = false
 
@@ -113,6 +115,15 @@ function MyApp ({ Component, pageProps }) {
             src: local(''),
               url('/assets/fonts/open-sans-v18-latin-700.woff2') format('woff2'),
               url('/assets/fonts/open-sans-v18-latin-700.woff') format('woff');
+          }
+          @font-face {
+            font-family: 'Architects Daughter';
+            font-style: normal;
+            font-weight: 400;
+            src: local(''),
+              url('/assets/fonts/architects-daughter-v11-latin-regular.woff2')
+                format('woff2'),
+                url('/assets/fonts/architects-daughter-v11-latin-regular.woff')
           }
         `}
       />
