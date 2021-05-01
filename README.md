@@ -1,34 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Comunidad Lol México
 
-## Getting Started
+Lol México es una comunidad de jugadores cuyo principal objetivo es que la comunidad disfrute del juego
 
-First, run the development server:
+## Objetivo
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+El objetivo de esta pagina es tener un espacio para entregar información y herramientas a la comunidad.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Comenzar
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Puedes clonar este repositorio e instalar las dependencias usando `npm install`, para ello deberás tener instalado [Node](https://nodejs.org/es/).
+Los comandos disponibles son:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- `npm run dev` Para iniciar el entorno de desarrollo
+- `npm run build` Para construir una versión de producción.
+- `npm run export` Para construir y exportar una versión de producción.
+- `npm run start` Para crear un servidor de producción.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Dependencias
 
-## Learn More
+Este proyecto esta escrito siguiendo el estilo de escritura [StandardJs](https://standardjs.com/rules.html).
 
-To learn more about Next.js, take a look at the following resources:
+- [React](https://es.reactjs.org/)
+- [Emotion](https://emotion.sh/docs/introduction)
+- [FontAwesome](https://fontawesome.com/)
+- [Formik](https://formik.org/)
+- [NextJs](https://nextjs.org/)
+- [Yup](https://github.com/jquense/yup)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Este es un proyecto de [Next.js](https://nextjs.org/), creado con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
