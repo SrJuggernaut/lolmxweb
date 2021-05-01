@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import ListItem from '../components/ListItem'
 import Table from '../components/Table'
-import UnordenedList from '../components/UnordenedList'
+import UnorderedList from '../components/UnorderedList'
 import Layout from '../layout/Layout'
 
 export default function Home () {
@@ -10,18 +10,18 @@ export default function Home () {
     <Layout>
       <h1>Reglamento del grupo</h1>
       <h2 id="flexibilidad-de-contenido">Flexibilidad de contenido</h2>
-      <UnordenedList>
+      <UnorderedList>
         <ListItem>
           Las publicaciones de la comunidad siempre son bienvenidas.
         </ListItem>
-        <UnordenedList>
+        <UnorderedList>
           <ListItem>“Esto está pasando en mi vida, denme su consejo”</ListItem>
-        </UnordenedList>
+        </UnorderedList>
         <ListItem>Prohibido todo contenido de tipo:</ListItem>
-        <UnordenedList>
+        <UnorderedList>
           <ListItem>NSFW</ListItem>
           <ListItem>Violencia explicita</ListItem>
-        </UnordenedList>
+        </UnorderedList>
         <ListItem>
           Este grupo es de League Of Legends, no se permitirá contenido de otros
           juegos(Exceptuando los juegos de Riot).
@@ -44,7 +44,7 @@ export default function Home () {
           </a>{' '}
           de facebook.
         </ListItem>
-      </UnordenedList>
+      </UnorderedList>
       <h2 id="flexibilidad-de-lenguaje">Flexibilidad en el lenguaje</h2>
       <p>
         El lenguaje vulgar no está prohibido siempre y cuando no atente contra
@@ -61,18 +61,18 @@ export default function Home () {
         aprender.
       </p>
       <h2>Eventos</h2>
-      <UnordenedList>
+      <UnorderedList>
         <ListItem>
-          Todos los eventos deberan apegarse a la{' '}
+          Todos los eventos deberán apegarse a la{' '}
           <a href="#flexibilidad-de-contenido">Flexibilidad de contenido</a>.
         </ListItem>
         <ListItem>
           Está permitido publicar eventos, siempre y cuando estos sean dirigidos
           al disfrute y recreación de la comunidad.
         </ListItem>
-      </UnordenedList>
+      </UnorderedList>
       <h2>Streams</h2>
-      <UnordenedList>
+      <UnorderedList>
         <ListItem>
           Los streams serán bienvenidos siempre y cuando cumplan con la{' '}
           <a href="#flexibilidad-de-contenido">Flexibilidad de contenido</a>.
@@ -81,15 +81,15 @@ export default function Home () {
           En medida de lo posible intentar evitar que varios usuarios compartan
           el mismo stream, podría ser considerado como SPAM.
         </ListItem>
-      </UnordenedList>
+      </UnorderedList>
       <h2>Spam</h2>
       <p>Se considera Spam:</p>
-      <UnordenedList>
+      <UnorderedList>
         <ListItem>Contenido publicado de forma reiterativa.</ListItem>
         <ListItem>
           Streams que no cumplan con la Flexibilidad de contenido.
         </ListItem>
-      </UnordenedList>
+      </UnorderedList>
       <h2>Aplicación del reglamento</h2>
       <p>
         La administración se reserva el derecho de modificar el reglamento
@@ -108,9 +108,9 @@ export default function Home () {
           <tr>
             <td>1a</td>
             <td rowSpan="2">
-              <UnordenedList>
-                <ListItem>Eliminar Publicacion</ListItem>
-              </UnordenedList>
+              <UnorderedList>
+                <ListItem>Eliminar Publicación</ListItem>
+              </UnorderedList>
             </td>
           </tr>
           <tr>
@@ -119,10 +119,10 @@ export default function Home () {
           <tr>
             <td>3a</td>
             <td rowSpan="2">
-              <UnordenedList>
-                <ListItem>Eliminar Publicacion</ListItem>
+              <UnorderedList>
+                <ListItem>Eliminar Publicación</ListItem>
                 <ListItem>Silenciado 3 días</ListItem>
-              </UnordenedList>
+              </UnorderedList>
             </td>
           </tr>
           <tr>
@@ -131,11 +131,11 @@ export default function Home () {
           <tr>
             <td>5a</td>
             <td rowSpan="2">
-              <UnordenedList>
-                <ListItem>Eliminar Publicacion</ListItem>
+              <UnorderedList>
+                <ListItem>Eliminar Publicación</ListItem>
                 <ListItem>Silenciado 3 días</ListItem>
                 <ListItem>Aprobación de publicaciones</ListItem>
-              </UnordenedList>
+              </UnorderedList>
             </td>
           </tr>
           <tr>
@@ -144,9 +144,9 @@ export default function Home () {
           <tr>
             <td>7a</td>
             <td>
-              <UnordenedList>
+              <UnorderedList>
                 <ListItem icon="gavel">BAN</ListItem>
-              </UnordenedList>
+              </UnorderedList>
             </td>
           </tr>
         </tbody>

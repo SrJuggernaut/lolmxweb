@@ -25,8 +25,6 @@ const Layout = ({ children }) => {
   return (
     <>
       <Head>
-        lang
-        <title>Lol Mexico</title>
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="preload"
@@ -34,25 +32,31 @@ const Layout = ({ children }) => {
           as="font"
           crossOrigin=""
         />
+        <title>Lol Mexico</title>
+        <meta name="title" content="Lol Mexico" />
         <meta
           name="description"
           content="Lol Mexico es una comunidad de jugadores cuyo principal objetivo es que la comunidad disfrute del juego"
         />
-        <meta name="robots" content="index, follow" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://comunidadlolmx.cf/" />
         <meta property="og:title" content="Lol Mexico" />
-        <meta property="og:site_name" content="Lol Mexico" />
-        <meta property="og:url" content="https://comunidadlolmx.cf" />
         <meta
           property="og:description"
-          content="Lol México es una comunidad de jugadores cuyo principal objetivo es que la comunidad disfrute del juego"
+          content="Lol Mexico es una comunidad de jugadores cuyo principal objetivo es que la comunidad disfrute del juego"
         />
-        <meta property="og:type" content="website" />
         <meta property="og:image" content="/assets/img/LolMxOgImg.jpg" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://comunidadlolmx.cf/" />
+        <meta property="twitter:title" content="Lol Mexico" />
+        <meta
+          property="twitter:description"
+          content="Lol Mexico es una comunidad de jugadores cuyo principal objetivo es que la comunidad disfrute del juego"
+        />
+        <meta property="twitter:image" content="/assets/img/LolMxOgImg.jpg" />
       </Head>
       <Header />
-      <StyledMain>
-        {children}
-      </StyledMain>
+      <StyledMain>{children}</StyledMain>
       <Footer />
     </>
   )

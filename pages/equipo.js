@@ -26,7 +26,7 @@ const equipo = () => {
   return (
     <Layout>
       <h1>Equipo</h1>
-      <p>Actualmente la moderación del grupo esta a cargo de el equipo de moderación de EntGamers, si deseas unirte a la moderacion deberas seguir el proceso de</p>
+      <p>Actualmente la moderación del grupo esta a cargo de el equipo de moderación de EntGamers, si deseas unirte a la moderación deberás seguir el proceso de</p>
       <StyledGrid>
         {equipoArray.map(e => {
           return <Card {... e} key={e.title} />

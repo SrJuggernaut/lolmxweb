@@ -1,10 +1,13 @@
 import React, { useRef, useState } from 'react'
+import Head from 'next/head'
 import styled from '@emotion/styled'
-import Layout from '../../layout/Layout'
-import DuoToExport from '../../components/content/DuoToExport'
 import { useFormik } from 'formik'
-import { lgStart } from '../../helpers/breakPoints'
+import * as Yup from 'yup'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Layout from '../../layout/Layout'
+import Button from '../../components/ui/Button'
+import DuoToExport from '../../components/content/DuoToExport'
+import { lgStart } from '../../helpers/breakPoints'
 
 const StyledDuoGrid = styled.div`
   display: grid;
@@ -43,32 +46,28 @@ const StyledSelect = styled.select`
 const StyledPosterSpace = styled.div`
   overflow: scroll;
 `
-const StyledButton = styled.button`
-  display: inline-block;
-  background-color: var(--color-primary);
-  color: var(--color-text);
-  border: 1px solid var(--color-primary);
-  border-radius: 4px;
-  padding: 0.35em 1.2em;
-  font-weight: 700;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
-  &:hover {
-    cursor: pointer;
-    background-color: var(--color-primary);
-    color: var(--color-text);
-    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
-  }
-  &:active {
-    box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
-  }
+const StyledErrorAlert = styled.p`
+  color: var(--color-primary);
 `
 const duo = () => {
   const [exporting, setExporting] = useState(false)
   const simpleRef = useRef(null)
+  const duoFormSchema = Yup.object().shape({
+    userName: Yup.string()
+      .min(3, 'Nombre de usuario demasiado corto')
+      .max(16, 'Nombre de usuario demasiado largo'),
+    server: Yup.string(),
+    league: Yup.string(),
+    division: Yup.string(),
+    mainLine: Yup.string(),
+    secondaryLine: Yup.string(),
+    mainChamp: Yup.string().min(2, 'Nombre de campeón demasiado corto')
+  })
   const duoForm = useFormik({
+    validationSchema: duoFormSchema,
     initialValues: {
       userName: '',
-      server: '',
+      server: 'LAN',
       league: 'Unranked',
       division: 'I',
       mainLine: 'Superior',
@@ -84,7 +83,35 @@ const duo = () => {
   })
   return (
     <Layout>
+      <Head>
+        <title>Reglamento del grupo | Lol México</title>
+        <meta name="title" content="Reglamento del grupo | Lol México" />
+        <meta
+          name="description"
+          content="Reglamento del grupo Lol México, La administración se reserva el derecho de modificar el reglamento acorde a las necesidades y este será aplicado..."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://comunidadlolmx.cf/" />
+        <meta property="og:title" content="Reglamento del grupo | Lol México" />
+        <meta
+          property="og:description"
+          content="Reglamento del grupo Lol México, La administración se reserva el derecho de modificar el reglamento acorde a las necesidades y este será aplicado..."
+        />
+        <meta property="og:image" content="/assets/img/LolMxOgImg.jpg" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://comunidadlolmx.cf/" />
+        <meta
+          property="twitter:title"
+          content="Reglamento del grupo | Lol México"
+        />
+        <meta
+          property="twitter:description"
+          content="Reglamento del grupo Lol México, La administración se reserva el derecho de modificar el reglamento acorde a las necesidades y este será aplicado..."
+        />
+        <meta property="twitter:image" content="/assets/img/LolMxOgImg.jpg" />
+      </Head>
       <h1>Plantilla Buscar Duo</h1>
+      <p>Usa esta plantilla para conseguir tu duo soñado.</p>
       <StyledDuoGrid>
         <StyledPosterSpace>
           <DuoToExport
@@ -97,7 +124,7 @@ const duo = () => {
           <form onSubmit={duoForm.handleSubmit}>
             <div>
               <label htmlFor="userName">
-                User name:
+                Nombre de usuario:
                 <StyledInput
                   type="text"
                   id="userName"
@@ -106,18 +133,30 @@ const duo = () => {
                   value={duoForm.values.userName}
                 />
               </label>
+              {duoForm.errors.userName
+                ? (
+                <StyledErrorAlert>{duoForm.errors.userName}</StyledErrorAlert>
+                  )
+                : null}
             </div>
             <div>
               <label htmlFor="server">
                 Servidor:
-                <StyledInput
-                  type="text"
+                <StyledSelect
                   id="server"
                   name="server"
                   onChange={duoForm.handleChange}
                   value={duoForm.values.server}
-                />
+                >
+                  <option value="LAN">LAN</option>
+                  <option value="LAS">LAS</option>
+                </StyledSelect>
               </label>
+              {duoForm.errors.server
+                ? (
+                <StyledErrorAlert>{duoForm.errors.server}</StyledErrorAlert>
+                  )
+                : null}
             </div>
             <div>
               <label htmlFor="league">
@@ -139,6 +178,11 @@ const duo = () => {
                   <option value="Challenger">Challenger</option>
                 </StyledSelect>
               </label>
+              {duoForm.errors.league
+                ? (
+                <StyledErrorAlert>{duoForm.errors.league}</StyledErrorAlert>
+                  )
+                : null}
             </div>
             <div>
               <label htmlFor="division">
@@ -156,6 +200,11 @@ const duo = () => {
                   <option value="IV">IV</option>
                 </StyledSelect>
               </label>
+              {duoForm.errors.division
+                ? (
+                <StyledErrorAlert>{duoForm.errors.division}</StyledErrorAlert>
+                  )
+                : null}
             </div>
             <div>
               <label htmlFor="mainLine">
@@ -174,6 +223,11 @@ const duo = () => {
                   <option value="Jungla">Jungla</option>
                 </StyledSelect>
               </label>
+              {duoForm.errors.mainLine
+                ? (
+                <StyledErrorAlert>{duoForm.errors.mainLine}</StyledErrorAlert>
+                  )
+                : null}
             </div>
             <div>
               <label htmlFor="secondaryLine">
@@ -192,10 +246,17 @@ const duo = () => {
                   <option value="Jungla">Jungla</option>
                 </StyledSelect>
               </label>
+              {duoForm.errors.secondaryLine
+                ? (
+                <StyledErrorAlert>
+                  {duoForm.errors.secondaryLine}
+                </StyledErrorAlert>
+                  )
+                : null}
             </div>
             <div>
               <label htmlFor="mainChamp">
-                CampeonMain:
+                Campeón Main:
                 <StyledInput
                   type="text"
                   id="mainChamp"
@@ -204,12 +265,17 @@ const duo = () => {
                   value={duoForm.values.mainChamp}
                 />
               </label>
+              {duoForm.errors.mainChamp
+                ? (
+                <StyledErrorAlert>{duoForm.errors.mainChamp}</StyledErrorAlert>
+                  )
+                : null}
             </div>
             <div>
-              <StyledButton type="submit">
+              <Button type="submit">
                 Descargar{' '}
                 <FontAwesomeIcon icon={['fas', 'download']} fixedWidth />
-              </StyledButton>
+              </Button>
             </div>
           </form>
         </div>

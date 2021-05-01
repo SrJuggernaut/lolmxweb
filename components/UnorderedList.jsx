@@ -7,8 +7,8 @@ const StyledUnorderedList = styled.ul`
   }
 `
 
-const UnordenedList = ({ children }) => {
+const UnorderedList = ({ children }) => {
   return <StyledUnorderedList className="fa-ul">{children}</StyledUnorderedList>
 }
 
-export default UnordenedList
+export default UnorderedList

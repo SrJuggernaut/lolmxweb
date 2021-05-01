@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../layout/Layout'
 import styled from '@emotion/styled'
-import Button from '../components/Button'
+import Button from '../components/ui/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { mdStart, lgStart } from '../helpers/breakPoints'
 
@@ -47,7 +47,7 @@ export default function Home () {
         <section>
           <h2>Comunidades</h2>
           <p>
-            Otras comunidades a las que deberias considerar unirte si te gustan
+            Otras comunidades a las que deberías considerar unirte si te gustan
             los videojuegos:
           </p>
           <Button href="/comunidades">
@@ -55,9 +55,9 @@ export default function Home () {
           </Button>
         </section>
         <section>
-          <h2>Equipo de Moderacion</h2>
+          <h2>Equipo de Moderación</h2>
           <p>
-            Aqui puedes conocer al equipo de moderacion y aprender mas sobre
+            Aquí puedes conocer al equipo de moderación y aprender mas sobre
             como unirte
           </p>
           <Button href="/equipo">
@@ -66,7 +66,10 @@ export default function Home () {
         </section>
         <section>
           <h2>Herramientas</h2>
-          <p>Puedes</p>
+          <p>
+            Aquí puedes encontrar herramientas para facilitarte hacer
+            publicaciones en el grupo.
+          </p>
           <Button href="/herramientas">
             Ir a herramientas <FontAwesomeIcon icon="chevron-right" />
           </Button>

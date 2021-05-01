@@ -70,6 +70,11 @@ const Navbar = (props) => {
       </button>
       <ul>
         <li>
+          <a href="https://www.facebook.com/groups/comunidadlolmexico">
+            <FontAwesomeIcon icon={['fab', 'facebook']} /> Grupo
+          </a>
+        </li>
+        <li>
           <Link href="/reglamento">
             <a>Reglamento</a>
           </Link>

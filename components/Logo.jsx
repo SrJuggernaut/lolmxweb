@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 const StyledLogo = styled.svg`
   ${(props) => (props.color ? `fill: ${props.color};` : '')}
-  ${(props) => (props.witdh ? `width: ${props.witdh};` : '')}
+  ${(props) => (props.width ? `width: ${props.width};` : '')}
   ${(props) => (props.height ? `height: ${props.height};` : '')}
 `
 
