@@ -1,57 +1,99 @@
 import React, { useRef, useState } from 'react'
 import Head from 'next/head'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from '@emotion/styled'
+import { toJpeg } from 'html-to-image'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import DuoForm from '../../components/content/solicitudDuo/DuoForm'
 import Layout from '../../layout/Layout'
-import Button from '../../components/ui/Button'
-import DuoToExport from '../../components/content/DuoToExport'
+import DuoToExport from '../../components/content/solicitudDuo/DuoToExport'
 import { lgStart } from '../../helpers/breakPoints'
 
 const StyledDuoGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   gap: 16px;
   @media (min-width: ${lgStart}) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
   }
 `
-const StyledInput = styled.input`
-  display: block;
-  margin-block: 8px;
-  padding: 4px;
-  border-radius: 8px;
-  border: 1px solid var(--color-text);
-  width: 100%;
-  &:active,
-  &:focus {
-    outline: none;
-    border: 1px solid var(--color-primary);
+const StyledGridColumn = styled.div`
+  > h2 {
+    text-align: center;
   }
 `
-const StyledSelect = styled.select`
-  display: block;
-  margin-block: 8px;
-  padding: 4px;
-  border-radius: 8px;
-  border: 1px solid var(--color-text);
-  width: 100%;
-  &:active,
-  &:focus {
-    outline: none;
-    border: 1px solid var(--color-primary);
+
+const StyledPreview = styled.div`
+  > h2 {
+    text-align: center;
+  }
+  @media (min-width: ${lgStart}) {
+    grid-column:  span 2;
   }
 `
 const StyledPosterSpace = styled.div`
   overflow: scroll;
+  &::-webkit-scrollbar-track {
+    border-radius: var(--spacer);
+    background: rgba(239, 250, 240, 0.05);
+  }
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border-radius: var(--spacer);
+    background: rgba(239, 250, 240, 0.05);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: var(--spacer);
+    background: #ff5555;
+  }
 `
-const StyledErrorAlert = styled.p`
-  color: var(--color-primary);
+const StyledButton = styled.button`
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  &:disabled {
+    cursor: initial;
+    opacity: 50%;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    box-shadow: 4px 4px 2px 1px rgba(0, 0, 0, 0.5);
+  }
+  &:active {
+    box-shadow: inset 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+  }
+`
+const SyledButonWrappper = styled.div`
+  display: flex;
+  justify-content: space-around;
 `
 const duo = () => {
-  const [exporting, setExporting] = useState(false)
+  const [imgSrc, setImgSrc] = useState('')
   const simpleRef = useRef(null)
+  const handleShow = async () => {
+    const dataUrl = await toJpeg(simpleRef.current, { quality: 0.95 })
+    setImgSrc(dataUrl)
+  }
+  const handleDownload = async () => {
+    const dataUrl = await toJpeg(simpleRef.current, { quality: 0.95 })
+    console.log(dataUrl)
+    const link = document.createElement('a')
+    link.download = 'duo.jpeg'
+    link.href = dataUrl
+    link.click()
+  }
   const duoFormSchema = Yup.object().shape({
     userName: Yup.string()
       .min(3, 'Nombre de usuario demasiado corto')
@@ -73,12 +115,6 @@ const duo = () => {
       mainLine: 'Superior',
       secondaryLine: 'Superior',
       mainChamp: ''
-    },
-    onSubmit: async () => {
-      await setExporting(true)
-      const { exportComponentAsJPEG } = require('react-component-export-image')
-      await exportComponentAsJPEG(simpleRef, { fileName: 'SolicitudDuo.jpg' })
-      setExporting(false)
     }
   })
   return (
@@ -111,174 +147,37 @@ const duo = () => {
         <meta property="twitter:image" content="/assets/img/LolMxOgImg.jpg" />
       </Head>
       <h1>Plantilla Buscar Duo</h1>
-      <p>Usa esta plantilla para conseguir tu duo soñado.</p>
       <StyledDuoGrid>
-        <StyledPosterSpace>
-          <DuoToExport
-            reference={simpleRef}
-            exporting={exporting}
-            {...duoForm.values}
-          />
-        </StyledPosterSpace>
-        <div>
-          <form onSubmit={duoForm.handleSubmit}>
-            <div>
-              <label htmlFor="userName">
-                Nombre de usuario:
-                <StyledInput
-                  type="text"
-                  id="userName"
-                  name="userName"
-                  onChange={duoForm.handleChange}
-                  value={duoForm.values.userName}
-                />
-              </label>
-              {duoForm.errors.userName
-                ? (
-                <StyledErrorAlert>{duoForm.errors.userName}</StyledErrorAlert>
-                  )
-                : null}
-            </div>
-            <div>
-              <label htmlFor="server">
-                Servidor:
-                <StyledSelect
-                  id="server"
-                  name="server"
-                  onChange={duoForm.handleChange}
-                  value={duoForm.values.server}
-                >
-                  <option value="LAN">LAN</option>
-                  <option value="LAS">LAS</option>
-                </StyledSelect>
-              </label>
-              {duoForm.errors.server
-                ? (
-                <StyledErrorAlert>{duoForm.errors.server}</StyledErrorAlert>
-                  )
-                : null}
-            </div>
-            <div>
-              <label htmlFor="league">
-                Liga:
-                <StyledSelect
-                  id="league"
-                  name="league"
-                  onChange={duoForm.handleChange}
-                  value={duoForm.values.league}
-                >
-                  <option value="Unranked">Unranked</option>
-                  <option value="Hierro">Hierro</option>
-                  <option value="Bronce">Bronce</option>
-                  <option value="Plata">Plata</option>
-                  <option value="Oro">Oro</option>
-                  <option value="Platino">Platino</option>
-                  <option value="Master">Master</option>
-                  <option value="GrandMaster">GrandMaster</option>
-                  <option value="Challenger">Challenger</option>
-                </StyledSelect>
-              </label>
-              {duoForm.errors.league
-                ? (
-                <StyledErrorAlert>{duoForm.errors.league}</StyledErrorAlert>
-                  )
-                : null}
-            </div>
-            <div>
-              <label htmlFor="division">
-                Division:
-                <StyledSelect
-                  type="text"
-                  id="division"
-                  name="division"
-                  onChange={duoForm.handleChange}
-                  value={duoForm.values.division}
-                >
-                  <option value="I">I</option>
-                  <option value="II">II</option>
-                  <option value="III">III</option>
-                  <option value="IV">IV</option>
-                </StyledSelect>
-              </label>
-              {duoForm.errors.division
-                ? (
-                <StyledErrorAlert>{duoForm.errors.division}</StyledErrorAlert>
-                  )
-                : null}
-            </div>
-            <div>
-              <label htmlFor="mainLine">
-                Carril principal:
-                <StyledSelect
-                  type="text"
-                  id="mainLine"
-                  name="mainLine"
-                  onChange={duoForm.handleChange}
-                  value={duoForm.values.mainLine}
-                >
-                  <option value="Superior">Superior</option>
-                  <option value="Central">Central</option>
-                  <option value="Inferior">Inferior</option>
-                  <option value="Support">Support</option>
-                  <option value="Jungla">Jungla</option>
-                </StyledSelect>
-              </label>
-              {duoForm.errors.mainLine
-                ? (
-                <StyledErrorAlert>{duoForm.errors.mainLine}</StyledErrorAlert>
-                  )
-                : null}
-            </div>
-            <div>
-              <label htmlFor="secondaryLine">
-                Carril secundario:
-                <StyledSelect
-                  type="text"
-                  id="secondaryLine"
-                  name="secondaryLine"
-                  onChange={duoForm.handleChange}
-                  value={duoForm.values.secondaryLine}
-                >
-                  <option value="Superior">Superior</option>
-                  <option value="Central">Central</option>
-                  <option value="Inferior">Inferior</option>
-                  <option value="Support">Support</option>
-                  <option value="Jungla">Jungla</option>
-                </StyledSelect>
-              </label>
-              {duoForm.errors.secondaryLine
-                ? (
-                <StyledErrorAlert>
-                  {duoForm.errors.secondaryLine}
-                </StyledErrorAlert>
-                  )
-                : null}
-            </div>
-            <div>
-              <label htmlFor="mainChamp">
-                Campeón Main:
-                <StyledInput
-                  type="text"
-                  id="mainChamp"
-                  name="mainChamp"
-                  onChange={duoForm.handleChange}
-                  value={duoForm.values.mainChamp}
-                />
-              </label>
-              {duoForm.errors.mainChamp
-                ? (
-                <StyledErrorAlert>{duoForm.errors.mainChamp}</StyledErrorAlert>
-                  )
-                : null}
-            </div>
-            <div>
-              <Button type="submit">
-                Descargar{' '}
-                <FontAwesomeIcon icon={['fas', 'download']} fixedWidth />
-              </Button>
-            </div>
-          </form>
-        </div>
+        <StyledGridColumn>
+          <h2>Vista previa</h2>
+          <p>Esta vista previa se actualiza en vivo</p>
+          <StyledPosterSpace>
+            <DuoToExport reference={simpleRef} {...duoForm.values} />
+          </StyledPosterSpace>
+        </StyledGridColumn>
+        <StyledGridColumn>
+          <h2>Datos</h2>
+          <DuoForm duoForm={duoForm} />
+          <p>En caso de que la opcion de descarga no funcione puedes mostrarla y hacer <strong>Clic derecho {'>'} descargar</strong></p>
+          <SyledButonWrappper>
+            <StyledButton type="button" onClick={handleDownload}>
+              Descargar{' '}
+              <FontAwesomeIcon icon={['fas', 'download']} fixedWidth />
+            </StyledButton>
+            <StyledButton type="button" onClick={handleShow}>
+              Mostrar{' '}
+              <FontAwesomeIcon icon={['fas', 'image']} fixedWidth />
+            </StyledButton>
+          </SyledButonWrappper>
+        </StyledGridColumn>
+        {imgSrc
+          ? (
+          <StyledPreview>
+            <h2>Descarga esta imagen</h2>
+            <img src={imgSrc} width="100%" alt="duo" />
+          </StyledPreview>
+            )
+          : null}
       </StyledDuoGrid>
     </Layout>
   )

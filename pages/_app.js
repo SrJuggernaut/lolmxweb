@@ -14,7 +14,8 @@ import {
   faGavel,
   faUsers,
   faGlobe,
-  faDownload
+  faDownload,
+  faImage
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faDiscord,
@@ -42,7 +43,8 @@ library.add(
   faChevronRight,
   faGavel,
   faUsers,
-  faDownload
+  faDownload,
+  faImage
 )
 config.autoAddCss = false
 

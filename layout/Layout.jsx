@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
         <meta property="og:title" content="Lol Mexico" />
         <meta
           property="og:description"
-          content="Lol Mexico es una comunidad de jugadores cuyo principal objetivo es que la comunidad disfrute del juego"
+          content="Lol Mexico es una comunidad de jugadores cuyo principal objetivo es que la comunidad disfrute del juego."
         />
         <meta property="og:image" content="/assets/img/LolMxOgImg.jpg" />
         <meta property="twitter:card" content="summary_large_image" />
@@ -51,7 +51,7 @@ const Layout = ({ children }) => {
         <meta property="twitter:title" content="Lol Mexico" />
         <meta
           property="twitter:description"
-          content="Lol Mexico es una comunidad de jugadores cuyo principal objetivo es que la comunidad disfrute del juego"
+          content="Lol Mexico es una comunidad de jugadores cuyo principal objetivo es que la comunidad disfrute del juego."
         />
         <meta property="twitter:image" content="/assets/img/LolMxOgImg.jpg" />
       </Head>
